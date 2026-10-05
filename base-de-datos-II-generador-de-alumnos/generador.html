@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Generador de Alumnos</title>
+    <script src="./js/functions.js"></script>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #1e3c72, #2a5298);
+            color: #fff;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            text-align: center;
+            padding: 2rem;
+            background: rgba(0,0,0,0.3);
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 2.5rem;
+            letter-spacing: 2px;
+        }
+
+        .container {
+            max-width: 700px;
+            margin: 2rem auto;
+            background: rgba(255,255,255,0.1);
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.4);
+        }
+
+        label {
+            display: block;
+            margin: 1rem 0 0.5rem;
+            font-weight: bold;
+        }
+
+        input[type="number"], select {
+            width: 100%;
+            padding: 0.6rem;
+            border-radius: 8px;
+            border: none;
+            outline: none;
+            font-size: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .btn-group {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .btn {
+            flex: 1;
+            padding: 0.8rem;
+            border: none;
+            border-radius: 8px;
+            background: #ff9800;
+            color: #fff;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .btn:hover {
+            background: #e68900;
+            transform: scale(1.05);
+        }
+
+        #salida {
+            margin-top: 2rem;
+            padding: 1rem;
+            background: rgba(255,255,255,0.2);
+            border-radius: 8px;
+            min-height: 150px;
+            font-size: 0.95rem;
+            text-align: left; 
+            white-space: pre-wrap; 
+            overflow-y: auto; 
+            max-height: 400px; 
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>🎓 Generador de Alumnos</h1>
+        <p>Configura los parámetros y genera tus registros fácilmente</p>
+    </header>
+
+    <div class="container">
+        <label for="registros">Número de registros:</label>
+        <input type="number" id="registros" value="1" min="1" max="50000">
+
+        <div class="btn-group">
+            <button class="btn" onclick="document.getElementById('registros').value=1;">Registros 1</button>
+            <button class="btn" onclick="document.getElementById('registros').value=50000;">Registros 50000</button>
+        </div>
+
+        <label for="opcion">Tipo de archivo:</label>
+        <select id="opcion">
+            <option value="1">SQL MySQL/MariaDB</option>
+            <option value="2">PostgreSQL</option>
+            <option value="3">CSV</option>
+            <option value="4">JSON</option>
+        </select>
+
+        <div class="btn-group">
+            <button class="btn" onclick="generar()">Generar</button>
+            <button class="btn" onclick="guardarArchivo()">Guardar</button>
+        </div>
+
+        <p id="salida">Aquí aparecerá la salida...</p>
+    </div>
+</body>
+</html>
